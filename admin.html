@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Bamotors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Bamotors</h1>
+    </header>
+
+    <main>
+        <h2>Liste des problèmes signalés</h2>
+        <div id="adminReports"></div>
+    </main>
+
+    <script>
+    let reports = JSON.parse(localStorage.getItem('reports')) || [];
+    const adminReports = document.getElementById('adminReports');
+
+    function displayAdminReports() {
+        adminReports.innerHTML = '';
+        reports.forEach((report, index) => {
+            const div = document.createElement('div');
+            div.classList.add('report');
+            div.innerHTML = `
+                <h3>${report.title}</h3>
+                <p>${report.description}</p>
+                <p><strong>Localisation:</strong> ${report.location}</p>
+                ${report.photo ? `<img src="${report.photo}" alt="Photo" width="200">` : ''}
+                <button onclick="markResolved(${index})">Marquer comme résolu</button>
+                <button onclick="deleteReport(${index})">Supprimer</button>
+            `;
+            adminReports.appendChild(div);
+        });
+    }
+
+    function markResolved(index) {
+        reports.splice(index, 1); // Simple suppression pour marquer résolu
+        localStorage.setItem('reports', JSON.stringify(reports));
+        displayAdminReports();
+    }
+
+    function deleteReport(index) {
+        reports.splice(index, 1);
+        localStorage.setItem('reports', JSON.stringify(reports));
+        displayAdminReports();
+    }
+
+    displayAdminReports();
+    </script>
+</body>
+</html>
