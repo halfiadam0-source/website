@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamotors - Signalement de problèmes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bamotors / KIA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Signaler un problème</h2>
+            <form id="reportForm">
+                <label for="title">Titre :</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="description">Description :</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <label for="photo">Photo :</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+
+                <label for="location">Localisation :</label>
+                <input type="text" id="location" name="location" required>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+
+        <section class="reports-section">
+            <h2>Problèmes signalés</h2>
+            <div id="reportsList">
+                <!-- Les signalements apparaîtront ici -->
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <h2>Contact</h2>
+        <p>Email : contact@bamotors.ma</p>
+        <p>Téléphone : +212 6 00 00 00 00</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
